@@ -13,16 +13,17 @@ import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import TabOneScreen from "../screens/TabOneScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from "../types";
+import { MainTabParamList, TabOneParamList, TabTwoParamList } from "../types";
+import { FontAwesome } from "@expo/vector-icons";
 
-const MainTab = createMaterialTopTabNavigator<BottomTabParamList>();
+const MainTab = createMaterialTopTabNavigator<MainTabParamList>();
 
 export default function MainTabNavigaitor() {
   const colorScheme = useColorScheme();
 
   return (
     <MainTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Chats"
       tabBarOptions={{
         activeTintColor: Colors[colorScheme].background,
         style: { backgroundColor: Colors[colorScheme].tint },
@@ -30,26 +31,25 @@ export default function MainTabNavigaitor() {
           backgroundColor: Colors[colorScheme].background,
           height: 4,
         },
+        labelStyle: {
+          fontWeight: "bold",
+        },
+        showIcon: true,
       }}
     >
       <MainTab.Screen
-        name="TabOne"
+        name="Camera"
         component={TabOneNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <TabBarIcon name="ios-code" color={color} />
+            <FontAwesome name="camera" size={20} color="white" />
           ),
+          tabBarLabel: () => null,
         }}
       />
-      <MainTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon name="ios-code" color={color} />
-          ),
-        }}
-      />
+      <MainTab.Screen name="Chats" component={TabTwoNavigator} />
+      <MainTab.Screen name="Status" component={TabTwoNavigator} />
+      <MainTab.Screen name="Calls" component={TabTwoNavigator} />
     </MainTab.Navigator>
   );
 }
