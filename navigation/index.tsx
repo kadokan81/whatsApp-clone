@@ -11,15 +11,21 @@ import {
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 import { ColorSchemeName } from "react-native";
-import { color } from "react-native-reanimated";
 import Colors from "../constants/Colors";
-import { Entypo, FontAwesome } from "@expo/vector-icons";
+import {
+  Entypo,
+  FontAwesome,
+  FontAwesome5,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "@expo/vector-icons";
 
 import NotFoundScreen from "../screens/NotFoundScreen";
 import { RootStackParamList } from "../types";
 import MainTabNavigaitor from "./MainTabNavigaitor";
 import LinkingConfiguration from "./LinkingConfiguration";
 import { View } from "../components/Themed";
+import ChatRoomScrean from "../screens/ChatRoomScrean";
 
 export default function Navigation({
   colorScheme,
@@ -73,6 +79,32 @@ function RootNavigator() {
             </View>
           ),
         }}
+      />
+      <Stack.Screen
+        name="chatRoom"
+        component={ChatRoomScrean}
+        options={({ route }) => ({
+          title: route.params.name,
+          headerRight: () => (
+            <View
+              style={{
+                flexDirection: "row",
+                width: "100%",
+                marginRight: 10,
+                backgroundColor: "transparent",
+                justifyContent: "space-between",
+              }}
+            >
+              <FontAwesome5 name="video" size={22} color={"white"} />
+              <MaterialIcons name="call" size={22} color={"white"} />
+              <MaterialCommunityIcons
+                name="dots-vertical"
+                size={22}
+                color={"white"}
+              />
+            </View>
+          ),
+        })}
       />
       <Stack.Screen
         name="NotFound"

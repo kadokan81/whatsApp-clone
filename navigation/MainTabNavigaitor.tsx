@@ -12,9 +12,10 @@ import * as React from "react";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import TabOneScreen from "../screens/TabOneScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
+import TabTwoScreen from "../screens/ChatsScrean";
 import { MainTabParamList, TabOneParamList, TabTwoParamList } from "../types";
 import { FontAwesome } from "@expo/vector-icons";
+import ChatsScrean from "../screens/ChatsScrean";
 
 const MainTab = createMaterialTopTabNavigator<MainTabParamList>();
 
@@ -35,6 +36,8 @@ export default function MainTabNavigaitor() {
           fontWeight: "bold",
         },
         showIcon: true,
+
+        tabStyle: {},
       }}
     >
       <MainTab.Screen
@@ -42,12 +45,17 @@ export default function MainTabNavigaitor() {
         component={TabOneNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="camera" size={20} color="white" />
+            <FontAwesome
+              name="camera"
+              size={20}
+              color="white"
+              // style={{ paddingHorizontal: -10 }}
+            />
           ),
           tabBarLabel: () => null,
         }}
       />
-      <MainTab.Screen name="Chats" component={TabTwoNavigator} />
+      <MainTab.Screen name="Chats" component={ChatsScrean} />
       <MainTab.Screen name="Status" component={TabTwoNavigator} />
       <MainTab.Screen name="Calls" component={TabTwoNavigator} />
     </MainTab.Navigator>
