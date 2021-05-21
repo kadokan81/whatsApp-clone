@@ -10,7 +10,7 @@ export type ChatListItemProps = {
 	chatRoom: ChatRoom;
 };
 
-const CatListItem = (props: ChatListItemProps) => {
+const ContactItem = (props: ChatListItemProps) => {
 	const { chatRoom } = props;
 	const navigation = useNavigation();
 	const user = chatRoom.users[1];
@@ -30,23 +30,15 @@ const CatListItem = (props: ChatListItemProps) => {
 						style={styles.avatar}
 					/>
 					<View style={styles.midContainer}>
-						<Text style={styles.username}>{user?.name}</Text>
-						<Text style={styles.lastMessage}>
-							{chatRoom.lastMessage.content}
-						</Text>
+						<Text style={styles.username}>{user.name}</Text>
 					</View>
 				</View>
-				<Text style={styles.time}>
-					{moment(chatRoom.lastMessage.craatedAt).format(
-						"DD/MM/YYYY"
-					)}
-				</Text>
 			</View>
 		</TouchableWithoutFeedback>
 	);
 };
 
-export default CatListItem;
+export default ContactItem;
 
 {
 	/* <View style={styles.container}>

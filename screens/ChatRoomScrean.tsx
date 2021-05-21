@@ -1,20 +1,22 @@
 import * as React from "react";
-import { Image, Text, View } from "react-native";
+import { FlatList, Image, ImageBackground, Text, View } from "react-native";
 import { useRoute } from "@react-navigation/native";
+import ChatMessage from "../components/ChatMessage";
+import Chats from "../data/Chats";
+import InputBox from "../components/InputBox";
+import BG from "../assets/images/BG.png";
 
 const ChatRoomScrean = () => {
-  const route = useRoute();
-  // console.log(route.params);
-
-  return (
-    <View>
-      <Image
-        style={{ width: 50, height: 50, borderRadius: 50 / 2 }}
-        source={{ uri: route.params.url }}
-      />
-      <Text>{route.params.name}</Text>
-    </View>
-  );
+	return (
+		<ImageBackground style={{ width: "100%", height: "100%" }} source={BG}>
+			<FlatList
+				data={Chats.messages}
+				renderItem={({ item }) => <ChatMessage message={item} />}
+				inverted
+			/>
+			<InputBox />
+		</ImageBackground>
+	);
 };
 
 export default ChatRoomScrean;
