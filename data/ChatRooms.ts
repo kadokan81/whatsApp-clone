@@ -9,7 +9,7 @@ export default [
 			},
 			{
 				id: "u2",
-				name: "Lukaska",
+				name: "Luka judo Krapalik",
 				imageUri: "https://randomuser.me/api/portraits/men/32.jpg",
 			},
 		],
